@@ -23,6 +23,9 @@ export default class Main extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
+
+    this.speak("Hey! Welcome to Open Eyes!");
+    this.speak("Place your camera in front of an object, then tap the screen for a description.");
   }
 
   //async method to snap image
