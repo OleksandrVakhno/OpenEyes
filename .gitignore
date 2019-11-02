@@ -102,3 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+
+
+
+
+#for react native front end
+mobileeyes/node_modules/
