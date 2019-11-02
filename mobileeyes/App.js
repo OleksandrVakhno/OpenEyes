@@ -7,12 +7,18 @@ import { StyleSheet,
           Dimensions, } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
+import Constants from 'expo-constants';
+import * as Speech from 'expo-speech';
 
 export default class Main extends React.Component {
   state = {
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,
   };
+
+  speak(thingToSay) {
+    Speech.speak(thingToSay);
+  }
 
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
@@ -23,6 +29,8 @@ export default class Main extends React.Component {
   snap = async () => {
     if (this.camera) {
       let photo = await this.camera.takePictureAsync();
+
+      this.speak("Hello");
 
       const data = new FormData();
       data.append('name', 'testName'); // you can append anyone.
@@ -35,8 +43,10 @@ export default class Main extends React.Component {
         method: 'post',
         body: data
       }).then(res => {
-        console.log(res)
+        console.log(res);
+        //this.speak("Hello");
       });
+        
     }
   };
 
@@ -57,7 +67,7 @@ export default class Main extends React.Component {
                 onPress={() => {
                   this.snap();
                 }}>
-                <Text style={styles.circle}> Snap </Text>
+                <Text style={styles.circle}> </Text>
               </TouchableHighlight>
             </View>
           </Camera>
@@ -77,10 +87,9 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
     },
     button:{
-      borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
-        width: Dimensions.get('window').width * 0.3,
-        height: Dimensions.get('window').width * 0.3,
-        backgroundColor:'#66cccc',
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+        backgroundColor:'transparent',
         borderColor: 'white',
         justifyContent: 'center',
         alignItems: 'center'
