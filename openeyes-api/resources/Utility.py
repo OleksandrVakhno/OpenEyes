@@ -26,6 +26,8 @@ class Utility:
     def extract_features(self, image):
         import keras.backend.tensorflow_backend as tb
         tb._SYMBOLIC_SCOPE.value = True
+        import ssl
+        ssl._create_default_https_context = ssl._create_unverified_context
         # load the model
         model = VGG16()
         # re-structure the model

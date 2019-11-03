@@ -7,7 +7,7 @@ from resources.Utility import Utility
 
 tokenizer = load(open('resources/tokenizer.pkl', 'rb'))
 # pre-define the max sequence length (from training)
-max_length = 34
+max_length = 12
 # load the model
 model = load_model('resources/model_19.h5')
 
