@@ -1,0 +1,79 @@
+
+.mediaViewInfo {
+		--web-view-name: Web 1920 – 1;
+		--web-view-id: Web_1920___1;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: Web_1920___1;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#Web_1920___1 {
+		position: absolute;
+		box-sizing: border-box;
+		background: #E5E5E5;
+		width: 1280px;
+		height: 2385px;
+		background-color: rgba(255,255,255,1);
+		overflow: hidden;
+		--web-view-name: Web 1920 – 1;
+		--web-view-id: Web_1920___1;
+		--web-enable-deep-linking: true;
+	}
+	.Open_Eye {
+		position: absolute;
+		overflow: visible;
+		width: 678px;
+		height: 362px;
+		left: 25%;
+		top: 60px;
+	}
+	#About_the_App {
+		position: absolute;
+		left: 187px;
+		top: 534px;
+		overflow: visible;
+		width: 548px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Helvetica Neue;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 80px;
+		color: rgba(0,0,0,1);
+	}
+	#lorem_ipsum_tbkjdhjbsnmdbmsnmx {
+		position: absolute;
+		left: 186px;
+		top: 637px;
+		overflow: hidden;
+		width: 1100px;
+		height: 600px;
+		text-align: left;
+		font-family: Helvetica Neue;
+		font-style: normal;
+		font-weight: lighter;
+		font-size: 40px;
+		color: rgba(0,0,0,1);
+	}
+	.Subtraction_1 {
+		filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.161));
+		overflow: visible;
+		position: absolute;
+		width: 415px;
+		height: 110px;
+		left: 186px;
+		top: 1200px;
+		transform: matrix(1,0,0,1,0,0);
+		fill:rgba(102,204,204,1);
+	}
+
+	.Subtraction_1:hover{
+	fill: gray;
+
+	}
