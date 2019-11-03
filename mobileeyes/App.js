@@ -10,6 +10,9 @@ import { Camera } from 'expo-camera';
 import Constants from 'expo-constants';
 import * as Speech from 'expo-speech';
 
+const { manifest } = Constants;
+
+
 export default class Main extends React.Component {
   state = {
     hasCameraPermission: null,
@@ -24,7 +27,7 @@ export default class Main extends React.Component {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
 
-    this.speak("Hey! Welcome to Open Eyes!");
+    this.speak("Welcome to Open Eyes!");
     this.speak("Place your camera in front of an object, then tap the screen for a description.");
   }
 
@@ -33,21 +36,30 @@ export default class Main extends React.Component {
     if (this.camera) {
       let photo = await this.camera.takePictureAsync();
 
-      this.speak("Hello");
+      const url = `http://${manifest.debuggerHost.split(':').shift()}:5000/api/process_image`;
+
+      Speech.stop();
+      this.speak("Processing");
 
       const data = new FormData();
       data.append('name', 'testName'); // you can append anyone.
-      data.append('photo', {
+      data.append('file', {
         uri: photo.uri,
         type: 'image/jpeg', // or photo.type
         name: 'testPhotoName'
       });
+
       fetch(url, {
-        method: 'post',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
         body: data
-      }).then(res => {
-        console.log(res);
-        //this.speak("Hello");
+      }).then(res => res.json())
+      .then(res => {
+        this.speak(res.data);
+      }).catch((error)=>{
+        alert(error.message);
       });
         
     }
